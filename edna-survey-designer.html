@@ -376,7 +376,7 @@
       <div class="map-panel">
         <div class="map-toolbar">
           <span>Survey Map</span>
-          <button class="map-btn active" id="btn-draw" onclick="setMapMode('pan')">✏ Draw</button>
+          <button class="map-btn active" id="btn-draw" onclick="setMapMode('draw')">✏ Draw</button>
           <button class="map-btn" id="btn-pan" onclick="setMapMode('pan')">✥ Pan</button>
           <button class="map-btn" id="btn-clear" onclick="clearMap()">✕ Clear</button>
           <button class="map-btn" id="btn-satellite" onclick="toggleSatellite()">🛰 Satellite</button>
@@ -488,7 +488,7 @@ function initMap() {
   map.on('click', onMapClick);
   map.on('dblclick', onMapDblClick);
   requestAnimationFrame(() => { map.invalidateSize(); });
-  setMapMode('pan');
+  setMapMode('draw');
 }
 
 function onMapClick(e) {
@@ -564,7 +564,7 @@ function clearMap() {
   if (snappedLayer) { map.removeLayer(snappedLayer); snappedLayer = null; }
   document.querySelector('.map-toolbar').classList.remove('locked');
   document.getElementById('lock-badge').classList.remove('visible');
-  setMapMode('pan');
+  setMapMode('draw');
 }
 
 function clearSampleMarkers() { sampleMarkers.forEach(m => map.removeLayer(m)); sampleMarkers = []; }
